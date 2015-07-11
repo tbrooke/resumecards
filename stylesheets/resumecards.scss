@@ -147,8 +147,22 @@ footer {
 /* Heading */
 
 h1, h2, h3, h4, h5, h6,
-.panel-title,
+.panel-title {
+  color: $color-base;
+
+  @each $color-name in $color-list {
+    .theme-#{$color-name} & {
+      color: map-get(map-get($all-colors, $color-name), "base");
+    }
+  }
+}
+.card-image {
+  text-align: center;
+  margin: 10px;
+}
+
 .resume-contact {
+  margin-top: 70px;
   color: $color-base;
 
   @each $color-name in $color-list {
@@ -170,7 +184,8 @@ h2 {
 }
 
 h4 {
-  margin: 0;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 /* Other Base Tags */
@@ -235,7 +250,7 @@ a {
 }
 
 .panel-body {
-  height: 280px;
+  height: 380px;
   overflow: hidden;
 }
 
@@ -445,12 +460,12 @@ script + p {
   }
 }
 
-.resume-duration {
+.resume-publication {
   margin-bottom: 0;
 }
 
-.resume-duration,
-.resume-location {
+.resume-publication,
+.resume-isbn {
   color: $color-muted;
   line-height: 1.4;
 
@@ -468,7 +483,7 @@ script + p {
 
 @media (max-width: $screen-sm-max) and (min-width: $screen-sm-min) {
   .panel-body {
-    height: 320px;
+    height: 420px;
   }
 }
 
@@ -531,7 +546,7 @@ script + p {
   }
 
   .panel-body {
-    height: 210px;
+    height: 280px;
   }
 
   .resume-content {
@@ -570,8 +585,8 @@ script + p {
     font-size: $font-size-base - 4;
   }
 
-  .resume-duration,
-  .resume-location {
+  .resume-publication,
+  .resume-isbn {
     font-size: $font-size-base - 5;
   }
 
